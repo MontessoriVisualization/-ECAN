@@ -341,28 +341,22 @@
       display: block;
     }
 
-    .logo-text-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      line-height: 1.15;
-    }
-
-    .logo-np {
-      font-family: 'Poppins', sans-serif;
-      font-size: 14.5px;
-      font-weight: 700;
+    .logo .wm {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
       color: var(--midnight);
-      letter-spacing: -0.01em;
+      line-height: 1;
+      letter-spacing: .01em;
     }
 
-    .logo-en {
+    .logo .tag {
+      font-size: 9px;
+      letter-spacing: .1em;
+      color: var(--slate);
       font-family: 'Poppins', sans-serif;
-      font-size: 8px;
       font-weight: 600;
-      color: var(--vermillion);
-      letter-spacing: -0.01em;
-      margin-top: 1px;
+      text-transform: uppercase;
+      margin-top: 2px;
     }
 
     nav.main {
@@ -378,27 +372,18 @@
       font-size: 14px;
       color: var(--slate);
       padding: 6px 12px;
-      position: relative;
+      border-radius: 8px;
       transition: .15s;
     }
 
     nav.main a:hover {
       color: var(--ink);
+      background: var(--frost);
     }
 
     nav.main a.active {
       color: var(--royal);
-    }
-
-    nav.main a.active::after {
-      content: "";
-      position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: -4px;
-      height: 2.5px;
-      background: var(--vermillion);
-      border-radius: 2px;
+      background: var(--royal-glow);
     }
 
     .bar .right {
@@ -448,11 +433,11 @@
 
     .hero .grid {
       display: grid;
-      grid-template-columns: 1.15fr 1fr .35fr;
-      gap: 32px;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
       align-items: center;
-      min-height: 600px;
-      padding: 48px 0;
+      min-height: 580px;
+      padding: 64px 0 0;
     }
 
     .hero-content {
@@ -460,13 +445,11 @@
     }
 
     .hero h1 {
-      font-size: clamp(38px, 5.2vw, 64px);
-      line-height: 1.1;
+      font-size: clamp(40px, 5.8vw, 72px);
+      line-height: 1.05;
       letter-spacing: -.02em;
       color: var(--midnight);
       margin-top: 20px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
     }
 
     .hero h1 .accent {
@@ -591,120 +574,126 @@
     /* Hero visual — geometric document/passport collage */
     .hero-visual {
       position: relative;
+      min-height: 480px;
+      align-self: end;
+    }
+
+    .geo-shape {
+      position: absolute;
+      border-radius: var(--radius);
+      transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .geo-main {
+      right: 0;
+      bottom: 0;
+      width: 72%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, var(--frost), #dde5f0);
+      border: 1px solid var(--line);
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100%;
-      min-height: 520px;
+      text-align: center;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
     }
 
-    .visual-bg-decor {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
+    .geo-main .ph-inner {
+      color: var(--slate-light);
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
     }
 
-    .visual-bg-decor svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .student-img-container {
-      position: relative;
-      z-index: 2;
-      width: 90%;
-      max-width: 420px;
-      height: auto;
-      margin-bottom: -48px;
-    }
-
-    .student-img {
-      width: 100%;
-      height: auto;
+    .geo-main .ph-inner b {
+      color: var(--slate);
       display: block;
-      filter: drop-shadow(0 20px 40px rgba(11, 29, 58, 0.12));
+      margin-bottom: 6px;
+      font-weight: 700;
     }
 
-    /* Vertical stats stack on hero */
-    .hero-stats-vertical {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      z-index: 5;
-      width: 100%;
-      max-width: 190px;
+    .geo-accent-1 {
+      left: 0;
+      top: 10%;
+      width: 44%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, rgba(27, 79, 210, .1), rgba(27, 79, 210, .04));
+      border: 1px solid rgba(27, 79, 210, .12);
+      border-radius: 16px;
+      z-index: 2;
+      backdrop-filter: blur(8px);
     }
 
-    .hero-stat-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.25s ease;
+    .geo-accent-2 {
+      right: 5%;
+      top: 0;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--saffron), #d4960e);
+      border-radius: 18px;
+      opacity: .85;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 36px rgba(232, 168, 23, .25);
+    }
+
+    .geo-accent-2 .yr {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .geo-accent-2 .yr small {
+      font-size: 11px;
+      display: block;
+      margin-top: 4px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .8;
+    }
+
+    /* Stat cards on hero */
+    .hero-stats {
+      position: absolute;
+      bottom: 24px;
+      left: 0;
+      right: 0;
+      z-index: 4;
+      display: flex;
       gap: 12px;
     }
 
-    .hero-stat-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--line);
+    .hero-stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 20px;
+      flex: 1;
+      box-shadow: var(--shadow-sm);
     }
 
-    .stat-icon-wrapper {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .stat-icon-wrapper.blue-bg {
-      background: var(--royal-glow);
-      color: var(--royal);
-    }
-
-    .stat-icon-wrapper.red-bg {
-      background: rgba(217, 48, 37, 0.08);
-      color: var(--vermillion);
-    }
-
-    .stat-icon-wrapper svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .stat-info b {
-      font-family: 'Poppins', sans-serif;
-      font-size: 24px;
+    .hero-stat b {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 26px;
       color: var(--midnight);
-      font-weight: 700;
       display: block;
-      line-height: 1.15;
+      line-height: 1;
     }
 
-    .stat-info small {
-      font-family: 'Poppins', sans-serif;
+    .hero-stat small {
       font-size: 12px;
       color: var(--slate);
+      font-family: 'Poppins', sans-serif;
       font-weight: 500;
-      display: block;
       margin-top: 4px;
-      line-height: 1.3;
-    }
-
-    /* Dot matrix pattern */
-    .dot-pattern {
-      position: absolute;
-      right: -24px;
-      bottom: 15%;
-      z-index: 1;
-      pointer-events: none;
-      opacity: 0.6;
+      display: block;
     }
 
     /* ═══════════════════════════════════════
@@ -739,94 +728,74 @@
     /* ═══════════════════════════════════════
      TRUST BAR
      ═══════════════════════════════════════ */
-    /* ═══════════════════════════════════════
-     TRUST BAR
-     ═══════════════════════════════════════ */
     .trustbar {
-      padding: 24px 0 64px;
-      background: transparent;
+      padding: 0;
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
     }
 
-    .trustbar-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
+    .trustbar .inner {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      overflow: hidden;
-      position: relative;
     }
 
-    .trustbar-card .trust-item {
-      padding: 32px 28px;
+    .trust-item {
+      padding: 28px 24px;
+      border-right: 1px solid var(--line-subtle);
       display: flex;
       gap: 16px;
       align-items: flex-start;
-      position: relative;
     }
 
-    .trustbar-card .trust-item:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 20%;
-      bottom: 20%;
-      width: 1px;
-      background: var(--line-subtle);
+    .trust-item:last-child {
+      border-right: none;
     }
 
-    .trustbar-card .trust-item.active-indicator::before {
-      content: "";
-      position: absolute;
-      left: 28px;
-      bottom: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--vermillion);
-      border-radius: 3px 3px 0 0;
-    }
-
-    .trustbar-card .t-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+    .trust-item .t-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
 
-    .trustbar-card .t-icon.blue-bg {
+    .trust-item .t-icon.navy-bg {
+      background: rgba(11, 29, 58, .06);
+      color: var(--midnight);
+    }
+
+    .trust-item .t-icon.royal-bg {
       background: var(--royal-glow);
       color: var(--royal);
     }
 
-    .trustbar-card .t-icon.red-bg {
-      background: rgba(217, 48, 37, 0.08);
+    .trust-item .t-icon.vermillion-bg {
+      background: rgba(217, 48, 37, .08);
       color: var(--vermillion);
     }
 
-    .trustbar-card .t-icon svg {
-      width: 20px;
-      height: 20px;
+    .trust-item .t-icon.saffron-bg {
+      background: var(--saffron-muted);
+      color: #B8860B;
     }
 
-    .trustbar-card h4 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--midnight);
-      margin: 0 0 6px 0;
-      line-height: 1.3;
+    .trust-item .t-icon svg {
+      width: 22px;
+      height: 22px;
     }
 
-    .trustbar-card p {
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      color: var(--slate);
+    .trust-item h4 {
+      font-size: 15.5px;
+      margin-bottom: 4px;
+    }
+
+    .trust-item p {
+      font-size: 13.5px;
       margin: 0;
-      line-height: 1.45;
+      color: var(--slate);
+      line-height: 1.5;
     }
 
     /* ═══════════════════════════════════════
@@ -2060,34 +2029,17 @@
         margin-top: 16px;
       }
 
-      .hero-stats-vertical {
-        flex-direction: row;
-        max-width: none;
-        justify-content: center;
-        margin-top: 32px;
+      .hero-stats {
+        position: static;
+        margin-top: 20px;
       }
 
-      @media (max-width: 768px) {
-        .hero-stats-vertical {
-          flex-direction: column;
-          align-items: center;
-        }
-        .hero-stat-card {
-          width: 100%;
-          max-width: 280px;
-        }
-      }
-
-      .trustbar-card {
+      .trustbar .inner {
         grid-template-columns: 1fr 1fr;
       }
 
-      .trustbar-card .trust-item:nth-child(2)::after {
-        display: none;
-      }
-
-      .trustbar-card .trust-item.active-indicator::before {
-        left: 28px;
+      .trust-item:nth-child(2) {
+        border-right: none;
       }
 
       .about-grid,
@@ -2118,7 +2070,7 @@
         padding: 64px 0;
       }
 
-      .trustbar-card {
+      .trustbar .inner {
         grid-template-columns: 1fr;
       }
 
@@ -2266,19 +2218,18 @@
         <span class="mark">
           <img src="logo.png" alt="ECAN Logo">
         </span>
-        <span class="logo-text-wrapper">
-          <span class="logo-np">नेपाल शैक्षिक परामर्श संघ</span>
-          <span class="logo-en">EDUCATIONAL CONSULTANCY ASSOCIATION OF NEPAL</span>
+        <span>
+          <span class="wm">ECAN</span>
+          <span class="tag">Educational Consultancy Assoc. of Nepal</span>
         </span>
       </a>
       <nav class="main" id="mainNav" aria-label="Primary">
         <a class="active" href="#">Home</a>
-        <a href="#about">About ECAN</a>
-        <a href="#members">Members Directory</a>
-        <a href="#resources">Study Abroad Resources</a>
-        <a href="#events">Events &amp; Conferences</a>
+        <a href="#about">About</a>
+        <a href="#members">Members</a>
+        <a href="#resources">Resources</a>
+        <a href="#events">Events</a>
         <a href="#paths">Partnerships</a>
-        <a href="#">News &amp; Updates</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="right">
@@ -2293,129 +2244,51 @@
     <section class="hero">
       <div class="wrap grid">
         <div class="hero-content">
-          <span class="eyebrow">&mdash; 29 Years of Excellence</span>
+          <span class="eyebrow">29 Years of Excellence</span>
           <h1 style="margin-top:20px;">
             <span class="hero-word">Building</span>
-            <span class="hero-word">Global</span><br>
+            <span class="hero-word">Global</span>
             <span class="hero-word">Futures,</span>
             <span class="hero-word accent">Together.</span>
           </h1>
-          <p class="lede">ECAN connects Nepal to world-class education opportunities through trusted consultancies, strong partnerships, and student-first values.</p>
-          <div class="ctas" style="position: relative; z-index: 2;">
-            <a class="btn btn-primary" href="#about">Explore ECAN <span>&rarr;</span></a>
-            <a class="btn btn-outline" href="#members" style="display: inline-flex; align-items: center; gap: 8px;">
-              Find a Member
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            </a>
+          <p class="lede">ECAN connects Nepal to world-class education through trusted consultancies, strong
+            institutional partnerships, and student-first values.</p>
+          <div class="ctas">
+            <a class="btn btn-primary" href="#about">Explore ECAN <span>→</span></a>
+            <a class="btn btn-outline" href="#members">Find a Member</a>
           </div>
           <div class="trust">
             <div class="avatars">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80" alt="Student avatar">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" alt="Student avatar">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80" alt="Student avatar">
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80" alt="Student avatar">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80" alt="Student avatar">
+              <span>R</span><span>S</span><span>A</span><span>K</span><span>P</span>
             </div>
             <div class="tt">
               <b>Trusted by 750+ Members</b>
-              <small>A strong community across Nepal &amp; beyond.</small>
+              <small>A growing community across Nepal and beyond.</small>
             </div>
-          </div>
-          <div class="dot-pattern" aria-hidden="true">
-            <svg width="64" height="96" viewBox="0 0 64 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="8" cy="8" r="2.5" fill="var(--line)"/>
-              <circle cx="24" cy="8" r="2.5" fill="var(--line)"/>
-              <circle cx="40" cy="8" r="2.5" fill="var(--line)"/>
-              <circle cx="56" cy="8" r="2.5" fill="var(--line)"/>
-              <circle cx="8" cy="24" r="2.5" fill="var(--line)"/>
-              <circle cx="24" cy="24" r="2.5" fill="var(--line)"/>
-              <circle cx="40" cy="24" r="2.5" fill="var(--line)"/>
-              <circle cx="56" cy="24" r="2.5" fill="var(--line)"/>
-              <circle cx="8" cy="40" r="2.5" fill="var(--line)"/>
-              <circle cx="24" cy="40" r="2.5" fill="var(--line)"/>
-              <circle cx="40" cy="40" r="2.5" fill="var(--line)"/>
-              <circle cx="56" cy="40" r="2.5" fill="var(--line)"/>
-              <circle cx="8" cy="56" r="2.5" fill="var(--line)"/>
-              <circle cx="24" cy="56" r="2.5" fill="var(--line)"/>
-              <circle cx="40" cy="56" r="2.5" fill="var(--line)"/>
-              <circle cx="56" cy="56" r="2.5" fill="var(--line)"/>
-              <circle cx="8" cy="72" r="2.5" fill="var(--line)"/>
-              <circle cx="24" cy="72" r="2.5" fill="var(--line)"/>
-              <circle cx="40" cy="72" r="2.5" fill="var(--line)"/>
-              <circle cx="56" cy="72" r="2.5" fill="var(--line)"/>
-              <circle cx="8" cy="88" r="2.5" fill="var(--line)"/>
-              <circle cx="24" cy="88" r="2.5" fill="var(--line)"/>
-              <circle cx="40" cy="88" r="2.5" fill="var(--line)"/>
-              <circle cx="56" cy="88" r="2.5" fill="var(--line)"/>
-            </svg>
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="visual-bg-decor">
-            <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M 50 400 C 150 420, 220 280, 180 200 C 140 120, 240 100, 320 120 C 360 130, 420 180, 460 220" stroke="var(--royal)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.45"/>
-              <circle cx="250" cy="250" r="200" stroke="var(--line)" stroke-width="1" opacity="0.25" stroke-dasharray="2 2"/>
-              <path d="M 50 250 Q 250 150 450 250" stroke="var(--line)" stroke-width="1" opacity="0.2" stroke-dasharray="2 2"/>
-              <path d="M 50 250 Q 250 350 450 250" stroke="var(--line)" stroke-width="1" opacity="0.2" stroke-dasharray="2 2"/>
-              <path d="M 250 50 Q 150 250 250 450" stroke="var(--line)" stroke-width="1" opacity="0.2" stroke-dasharray="2 2"/>
-              <path d="M 250 50 Q 350 250 250 450" stroke="var(--line)" stroke-width="1" opacity="0.2" stroke-dasharray="2 2"/>
-              <g transform="translate(250, 110) rotate(-15) scale(0.8)">
-                <path d="M 0 0 L 40 -10 L 15 15 Z" fill="none" stroke="var(--royal)" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M 15 15 L 40 -10 L 22 28 Z" fill="none" stroke="var(--royal)" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M 15 15 L 22 28 L 18 19 Z" fill="none" stroke="var(--royal)" stroke-width="2" stroke-linejoin="round"/>
-              </g>
-            </svg>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="geo-accent-2">
+            <span class="yr">29<small>Years</small></span>
           </div>
-          <div class="student-img-container">
-            <img src="hero-right.png" alt="ECAN Student Portrait holding a book" class="student-img">
+          <div class="geo-accent-1"></div>
+          <div class="geo-main">
+            <span class="ph-inner"><b>▢ Hero Photo</b>Student portrait — aspirational, cut-out on transparent
+              background</span>
           </div>
-        </div>
-
-        <div class="hero-stats-vertical">
-          <div class="hero-stat-card reveal">
-            <div class="stat-icon-wrapper blue-bg">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
-            <div class="stat-info">
+          <div class="hero-stats">
+            <div class="hero-stat">
               <b class="countup" data-target="750">0</b>
               <small>Member Consultancies</small>
             </div>
-          </div>
-
-          <div class="hero-stat-card reveal reveal-delay-1">
-            <div class="stat-icon-wrapper red-bg">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-              </svg>
-            </div>
-            <div class="stat-info">
+            <div class="hero-stat">
               <b class="countup" data-target="40">0</b>
-              <small>Global Education Partners</small>
+              <small>Global Partners</small>
             </div>
-          </div>
-
-          <div class="hero-stat-card reveal reveal-delay-2">
-            <div class="stat-icon-wrapper blue-bg">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-            </div>
-            <div class="stat-info">
+            <div class="hero-stat">
               <b class="countup" data-target="29">0</b>
-              <small>Years of Industry Leadership</small>
+              <small>Years Leading</small>
             </div>
           </div>
         </div>
@@ -2437,63 +2310,65 @@
     <!-- ============ TRUST BAR ============ -->
     <section class="trustbar">
       <div class="wrap">
-        <div class="trustbar-card reveal">
-          <div class="trust-item active-indicator">
-            <div class="t-icon blue-bg">
+        <div class="inner">
+          <div class="trust-item reveal">
+            <div class="t-icon navy-bg">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                 stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                <path d="M9 11l2 2 4-4"></path>
+                <path d="M12 2 L3 7 L3 12 C3 17.5 7 22 12 23 C17 22 21 17.5 21 12 L21 7 Z" />
+                <path d="M9 12 L11 14 L15 10" />
               </svg>
             </div>
-            <div class="t-info">
+            <div>
               <h4>Trusted Network</h4>
-              <p>Verified consultancies committed to ethical guidance and success.</p>
+              <p>Verified consultancies committed to ethical guidance.</p>
             </div>
           </div>
-          <div class="trust-item">
-            <div class="t-icon red-bg">
+          <div class="trust-item reveal reveal-delay-1">
+            <div class="t-icon royal-bg">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                 stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                <path d="M2 12h20"></path>
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12 L22 12" />
+                <path d="M12 2 C14.5 4.5 16 8 16 12 C16 16 14.5 19.5 12 22" />
+                <path d="M12 2 C9.5 4.5 8 8 8 12 C8 16 9.5 19.5 12 22" />
               </svg>
             </div>
-            <div class="t-info">
+            <div>
               <h4>Global Connections</h4>
-              <p>Strong partnerships with universities and institutions worldwide.</p>
+              <p>Partnerships with institutions worldwide.</p>
             </div>
           </div>
-          <div class="trust-item">
-            <div class="t-icon blue-bg">
+          <div class="trust-item reveal reveal-delay-2">
+            <div class="t-icon saffron-bg">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                 stroke-linejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                <path d="M22 10 L14.5 10 L12 2 L9.5 10 L2 10 L8 14.5 L5.5 22 L12 17.5 L18.5 22 L16 14.5 Z" />
               </svg>
             </div>
-            <div class="t-info">
+            <div>
               <h4>Student Success</h4>
-              <p>Empowering students to achieve their global education goals.</p>
+              <p>Empowering students to reach global education goals.</p>
             </div>
           </div>
-          <div class="trust-item">
-            <div class="t-icon red-bg">
+          <div class="trust-item reveal reveal-delay-3">
+            <div class="t-icon vermillion-bg">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                 stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
             </div>
-            <div class="t-info">
+            <div>
               <h4>Industry Leadership</h4>
-              <p>Advocating for quality, standards, and growth of the education sector.</p>
+              <p>Advocating for quality and growth of the sector.</p>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
     <!-- ============ 2 · ABOUT ============ -->
     <section id="about">
