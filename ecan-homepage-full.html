@@ -1,0 +1,3279 @@
+<!DOCTYPE html>
+<!--
+  ECAN HOMEPAGE — Optimized UI
+  Design tokens:
+    --midnight #0B1D3A   --royal #1B4FD2   --vermillion #D93025
+    --saffron #E8A817    --frost #EDF2F8    --parchment #FAFBFD
+  Type: DM Serif Display (display) + Poppins (body/UI) + JetBrains Mono (data)
+  Signature: Ascent Line — topographic mountain-ridge SVG divider
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ECAN — Building Global Futures, Together</title>
+  <meta name="description"
+    content="ECAN connects Nepal to world-class education opportunities through 750+ trusted consultancies, strong partnerships, and student-first values since 1997.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════
+     DESIGN TOKENS
+     ═══════════════════════════════════════ */
+    :root {
+      --midnight: #0B1D3A;
+      --midnight-light: #122847;
+      --royal: #1B4FD2;
+      --royal-glow: rgba(27, 79, 210, .15);
+      --vermillion: #D93025;
+      --vermillion-deep: #B8271E;
+      --saffron: #E8A817;
+      --saffron-muted: rgba(232, 168, 23, .15);
+      --frost: #EDF2F8;
+      --parchment: #FAFBFD;
+      --ink: #1B2440;
+      --slate: #5B6A86;
+      --slate-light: #8896AE;
+      --card: #FFFFFF;
+      --line: #E2E9F2;
+      --line-subtle: #EEF3FA;
+      --shadow-lg: 0 16px 48px rgba(11, 29, 58, .10);
+      --shadow-md: 0 8px 24px rgba(11, 29, 58, .07);
+      --shadow-sm: 0 4px 12px rgba(11, 29, 58, .05);
+      --maxw: 1200px;
+      --radius: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 28px;
+    }
+
+    /* ═══════════════════════════════════════
+     RESET & BASE
+     ═══════════════════════════════════════ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--parchment);
+      color: var(--slate);
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      font-size: 16.5px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      color: var(--ink);
+      line-height: 1.15;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    h4,
+    .label {
+      font-family: 'Poppins', sans-serif;
+      color: var(--ink);
+      line-height: 1.3;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+
+    /* ═══════════════════════════════════════
+     UTILITIES
+     ═══════════════════════════════════════ */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 12.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--royal);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--saffron);
+    }
+
+    .eyebrow--light {
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .eyebrow--light::before {
+      background: var(--saffron);
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .center .eyebrow {
+      justify-content: center;
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 26px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all .2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--royal);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #1644B5;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(27, 79, 210, .3);
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: var(--royal);
+      border-color: var(--line);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--royal);
+      background: var(--royal-glow);
+    }
+
+    .btn-vermillion {
+      background: var(--vermillion);
+      color: #fff;
+    }
+
+    .btn-vermillion:hover {
+      background: var(--vermillion-deep);
+      transform: translateY(-1px);
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--vermillion);
+    }
+
+    .btn-white:hover {
+      background: #f5f5f5;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost-white {
+      background: transparent;
+      border-color: rgba(255, 255, 255, .35);
+      color: #fff;
+    }
+
+    .btn-ghost-white:hover {
+      background: rgba(255, 255, 255, .1);
+      border-color: rgba(255, 255, 255, .6);
+    }
+
+    /* Focus */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--saffron);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    /* Section headers */
+    .sec-top {
+      max-width: 60ch;
+    }
+
+    .sec-top h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      margin: 14px 0 0;
+    }
+
+    .sec-top p.intro {
+      font-size: 17.5px;
+      color: var(--slate);
+      margin-top: 16px;
+      max-width: 56ch;
+    }
+
+    /* Inline SVG icons base */
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ═══════════════════════════════════════
+     SCROLL REVEAL
+     ═══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s cubic-bezier(.22, 1, .36, 1),
+        transform .7s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: .3s;
+    }
+
+    /* ═══════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250, 251, 253, .85);
+      backdrop-filter: blur(16px) saturate(1.5);
+      -webkit-backdrop-filter: blur(16px) saturate(1.5);
+      border-bottom: 1px solid rgba(226, 233, 242, .6);
+    }
+
+    .bar {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--midnight);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo .mark svg,
+    .logo .mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .logo-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1.15;
+    }
+
+    .logo-np {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--midnight);
+      letter-spacing: -0.01em;
+    }
+
+    .logo-en {
+      font-family: 'Poppins', sans-serif;
+      font-size: 8px;
+      font-weight: 600;
+      color: var(--vermillion);
+      letter-spacing: -0.01em;
+      margin-top: 1px;
+    }
+
+    nav.main {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-left: 16px;
+    }
+
+    nav.main a {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--slate);
+      padding: 6px 12px;
+      position: relative;
+      transition: .15s;
+    }
+
+    nav.main a:hover {
+      color: var(--ink);
+    }
+
+    nav.main a.active {
+      color: var(--royal);
+    }
+
+    nav.main a.active::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: -4px;
+      height: 2.5px;
+      background: var(--vermillion);
+      border-radius: 2px;
+    }
+
+    .bar .right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .navtoggle {
+      display: none;
+      background: var(--frost);
+      border: 1.5px solid var(--line);
+      border-radius: 9px;
+      padding: 8px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--midnight);
+    }
+
+    /* ═══════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--parchment);
+      padding: 0;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--line) 1.2px, transparent 1.2px);
+      background-size: 18px 18px;
+      opacity: .5;
+      pointer-events: none;
+    }
+
+    .hero .wrap {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr .35fr;
+      gap: 32px;
+      align-items: center;
+      min-height: 600px;
+      padding: 48px 0;
+    }
+
+    .hero-content {
+      padding-bottom: 64px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5.2vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--midnight);
+      margin-top: 20px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+    }
+
+    .hero h1 .accent {
+      color: var(--vermillion);
+      position: relative;
+    }
+
+    /* Hero headline animation */
+    .hero-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: heroWordIn .6s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+
+    .hero-word:nth-child(1) {
+      animation-delay: .1s;
+    }
+
+    .hero-word:nth-child(2) {
+      animation-delay: .18s;
+    }
+
+    .hero-word:nth-child(3) {
+      animation-delay: .26s;
+    }
+
+    .hero-word:nth-child(4) {
+      animation-delay: .34s;
+    }
+
+    .hero-word:nth-child(5) {
+      animation-delay: .42s;
+    }
+
+    .hero-word:nth-child(6) {
+      animation-delay: .50s;
+    }
+
+    @keyframes heroWordIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero .lede {
+      font-size: 18px;
+      color: var(--slate);
+      max-width: 44ch;
+      margin: 24px 0 32px;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp .6s .55s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero .ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .6s .65s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+
+    .hero .trust {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 36px;
+      opacity: 0;
+      animation: fadeUp .6s .75s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+
+    .avatars {
+      display: flex;
+    }
+
+    .avatars span {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2.5px solid var(--parchment);
+      margin-left: -10px;
+      background: linear-gradient(135deg, #3b6bc4, #6a8fd8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+
+    .avatars span:first-child {
+      margin-left: 0;
+    }
+
+    .trust .tt b {
+      font-family: 'Poppins', sans-serif;
+      color: var(--midnight);
+      font-size: 15px;
+      display: block;
+    }
+
+    .trust .tt small {
+      color: var(--slate);
+      font-size: 13px;
+    }
+
+    /* Hero visual — geometric document/passport collage */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      min-height: 520px;
+    }
+
+    .visual-bg-decor {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .visual-bg-decor svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .student-img-container {
+      position: relative;
+      z-index: 2;
+      width: 90%;
+      max-width: 420px;
+      height: auto;
+      margin-bottom: -48px;
+    }
+
+    .student-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 20px 40px rgba(11, 29, 58, 0.12));
+    }
+
+    /* Vertical stats stack on hero */
+    .hero-stats-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 5;
+      width: 100%;
+      max-width: 190px;
+    }
+
+    .hero-stat-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--line);
+    }
+
+    .stat-icon-wrapper {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-icon-wrapper.blue-bg {
+      background: var(--royal-glow);
+      color: var(--royal);
+    }
+
+    .stat-icon-wrapper.red-bg {
+      background: rgba(217, 48, 37, 0.08);
+      color: var(--vermillion);
+    }
+
+    .stat-icon-wrapper svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .stat-info b {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      color: var(--midnight);
+      font-weight: 700;
+      display: block;
+      line-height: 1.15;
+    }
+
+    .stat-info small {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      color: var(--slate);
+      font-weight: 500;
+      display: block;
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    /* Dot matrix pattern */
+    .dot-pattern {
+      position: absolute;
+      right: -24px;
+      bottom: 15%;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    /* ═══════════════════════════════════════
+     ASCENT LINE — Signature mountain divider
+     ═══════════════════════════════════════ */
+    .ascent-divider {
+      display: block;
+      width: 100%;
+      margin-top: -2px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .ascent-divider svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .ascent-path {
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      animation: drawAscent 2.5s 1s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+
+    @keyframes drawAscent {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+     TRUST BAR
+     ═══════════════════════════════════════ */
+    /* ═══════════════════════════════════════
+     TRUST BAR
+     ═══════════════════════════════════════ */
+    .trustbar {
+      padding: 24px 0 64px;
+      background: transparent;
+    }
+
+    .trustbar-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .trustbar-card .trust-item {
+      padding: 32px 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .trustbar-card .trust-item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 1px;
+      background: var(--line-subtle);
+    }
+
+    .trustbar-card .trust-item.active-indicator::before {
+      content: "";
+      position: absolute;
+      left: 28px;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--vermillion);
+      border-radius: 3px 3px 0 0;
+    }
+
+    .trustbar-card .t-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .trustbar-card .t-icon.blue-bg {
+      background: var(--royal-glow);
+      color: var(--royal);
+    }
+
+    .trustbar-card .t-icon.red-bg {
+      background: rgba(217, 48, 37, 0.08);
+      color: var(--vermillion);
+    }
+
+    .trustbar-card .t-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .trustbar-card h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--midnight);
+      margin: 0 0 6px 0;
+      line-height: 1.3;
+    }
+
+    .trustbar-card p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      color: var(--slate);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    /* ═══════════════════════════════════════
+     ABOUT
+     ═══════════════════════════════════════ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .about-img {
+      border-radius: var(--radius-lg);
+      aspect-ratio: 4/3;
+      background: var(--frost);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .badge-float {
+      position: absolute;
+      bottom: -16px;
+      left: -16px;
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: var(--shadow-lg);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .badge-float .b-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--saffron-muted);
+      color: var(--saffron);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge-float .b-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .badge-float b {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--midnight);
+      font-size: 22px;
+    }
+
+    .badge-float small {
+      font-size: 12px;
+      color: var(--slate);
+      display: block;
+    }
+
+    .about-text h2 {
+      font-size: clamp(28px, 3.6vw, 40px);
+      margin-top: 14px;
+    }
+
+    .about-text p.intro {
+      font-size: 17px;
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+
+    .pilllist {
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .pilllist li {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pilllist li:last-child {
+      border-bottom: none;
+    }
+
+    .pilllist .marker {
+      flex: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--midnight);
+      color: var(--saffron);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pilllist .marker svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .pilllist b {
+      font-family: 'Poppins', sans-serif;
+      color: var(--ink);
+      display: block;
+      font-size: 15.5px;
+      font-weight: 700;
+    }
+
+    .pilllist span {
+      font-size: 14px;
+    }
+
+    /* ═══════════════════════════════════════
+     MISSION CARDS
+     ═══════════════════════════════════════ */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 42px;
+    }
+
+    .m-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .m-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .m-card:nth-child(1)::before {
+      background: var(--royal);
+    }
+
+    .m-card:nth-child(2)::before {
+      background: var(--saffron);
+    }
+
+    .m-card:nth-child(3)::before {
+      background: var(--vermillion);
+    }
+
+    .m-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .m-card .m-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .m-card:nth-child(1) .m-icon {
+      background: var(--royal-glow);
+      color: var(--royal);
+    }
+
+    .m-card:nth-child(2) .m-icon {
+      background: var(--saffron-muted);
+      color: #B8860B;
+    }
+
+    .m-card:nth-child(3) .m-icon {
+      background: rgba(217, 48, 37, .08);
+      color: var(--vermillion);
+    }
+
+    .m-card .m-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .m-card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .m-card p {
+      font-size: 15px;
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════
+     MANDATE BAND
+     ═══════════════════════════════════════ */
+    .mandate {
+      background: var(--midnight);
+      color: rgba(255, 255, 255, .7);
+      border-radius: var(--radius-xl);
+      padding: 64px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Topographic contour pattern */
+    .mandate::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, transparent 30%, transparent 30.5%),
+        radial-gradient(circle, transparent 50%, rgba(255, 255, 255, .03) 50%, rgba(255, 255, 255, .03) 50.5%, transparent 51%),
+        radial-gradient(circle, transparent 70%, rgba(255, 255, 255, .025) 70%, rgba(255, 255, 255, .025) 70.5%, transparent 71%),
+        radial-gradient(circle, transparent 85%, rgba(255, 255, 255, .02) 85%, rgba(255, 255, 255, .02) 85.5%, transparent 86%),
+        radial-gradient(circle, transparent 95%, rgba(255, 255, 255, .015) 95%, rgba(255, 255, 255, .015) 95.5%, transparent 96%);
+      pointer-events: none;
+    }
+
+    .mandate .eyebrow {
+      color: rgba(255, 255, 255, .6);
+    }
+
+    .mandate h2 {
+      color: #fff;
+      font-size: clamp(28px, 3.6vw, 42px);
+      max-width: 22ch;
+      margin-top: 14px;
+    }
+
+    .mandate .lede {
+      font-size: 17.5px;
+      color: rgba(255, 255, 255, .55);
+      max-width: 60ch;
+      margin-top: 18px;
+      line-height: 1.7;
+    }
+
+    .mandate-row {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mandate-row>div {
+      min-width: 160px;
+    }
+
+    .mandate-row b {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      font-size: 17px;
+      display: block;
+      font-weight: 700;
+    }
+
+    .mandate-row small {
+      color: rgba(255, 255, 255, .4);
+      font-size: 13.5px;
+    }
+
+    /* ═══════════════════════════════════════
+     STAKES
+     ═══════════════════════════════════════ */
+    .stakes {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--frost);
+    }
+
+    .stakes h2 {
+      font-size: clamp(30px, 4.8vw, 56px);
+      line-height: 1.15;
+      max-width: 20ch;
+      margin: 18px auto 0;
+    }
+
+    .stakes h2 em {
+      font-style: normal;
+      color: var(--vermillion);
+      position: relative;
+    }
+
+    .stakes h2 em::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 3px;
+      background: var(--vermillion);
+      border-radius: 3px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .stakes.animated h2 em::after {
+      transform: scaleX(1);
+    }
+
+    .stakes .sub {
+      font-size: 18px;
+      color: var(--slate);
+      max-width: 54ch;
+      margin: 24px auto 0;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════
+     VISION
+     ═══════════════════════════════════════ */
+    .vision {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line);
+      padding: 56px;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .vision h2 {
+      font-size: clamp(28px, 3.4vw, 40px);
+      margin-top: 14px;
+    }
+
+    .vision .big {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(22px, 2.6vw, 30px);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+
+    .vision .big u {
+      text-decoration-color: var(--saffron);
+      text-underline-offset: 6px;
+      text-decoration-thickness: 3px;
+    }
+
+    /* ═══════════════════════════════════════
+     PRESIDENT + APP BAND
+     ═══════════════════════════════════════ */
+    .pres-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 28px;
+    }
+
+    .portrait-ph {
+      border-radius: var(--radius-lg);
+      aspect-ratio: 4/5;
+      background: var(--frost);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .portrait-ph img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pres-quote blockquote {
+      margin: 0;
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(20px, 2.4vw, 28px);
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .pres-quote blockquote .q {
+      color: var(--vermillion);
+      font-size: 1.3em;
+    }
+
+    .sign {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sign .ln {
+      width: 40px;
+      height: 3px;
+      background: var(--vermillion);
+      border-radius: 3px;
+    }
+
+    .sign b {
+      font-family: 'Poppins', sans-serif;
+      color: var(--midnight);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .sign span {
+      font-size: 13.5px;
+      color: var(--slate);
+    }
+
+    .app-band {
+      margin-top: 36px;
+      background: var(--midnight);
+      border-radius: var(--radius-xl);
+      padding: 48px 52px;
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-band::before {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -100px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(27, 79, 210, .15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .app-band .eyebrow {
+      color: rgba(255, 255, 255, .6);
+    }
+
+    .app-band h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(24px, 3vw, 34px);
+      color: #fff;
+      max-width: 18ch;
+      margin: 12px 0 10px;
+    }
+
+    .app-band p {
+      color: rgba(255, 255, 255, .55);
+      max-width: 44ch;
+      font-size: 16px;
+    }
+
+    .stores {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .store {
+      border: 1.5px solid rgba(255, 255, 255, .25);
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #fff;
+      transition: .2s;
+    }
+
+    .store:hover {
+      background: rgba(255, 255, 255, .08);
+      border-color: rgba(255, 255, 255, .5);
+    }
+
+    .phone-ph {
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 20px;
+      aspect-ratio: 9/16;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .04);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .phone-ph img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ═══════════════════════════════════════
+     PATHWAYS
+     ═══════════════════════════════════════ */
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 42px;
+    }
+
+    .path-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .path-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .path-card .p-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .path-card:nth-child(1) .p-icon {
+      background: var(--royal-glow);
+      color: var(--royal);
+    }
+
+    .path-card:nth-child(2) .p-icon {
+      background: rgba(217, 48, 37, .08);
+      color: var(--vermillion);
+    }
+
+    .path-card:nth-child(3) .p-icon {
+      background: var(--saffron-muted);
+      color: #B8860B;
+    }
+
+    .path-card .p-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .path-card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .path-card p {
+      font-size: 15px;
+      margin: 0 0 20px;
+      line-height: 1.65;
+    }
+
+    .path-card .go {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: var(--royal);
+      font-size: 14.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap .2s;
+    }
+
+    .path-card:hover .go {
+      gap: 10px;
+    }
+
+    /* ═══════════════════════════════════════
+     RESOURCES + EVENTS
+     ═══════════════════════════════════════ */
+    .res-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 20px;
+      margin-top: 42px;
+    }
+
+    .res-panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .res-panel h3 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .res-panel>p {
+      font-size: 15px;
+      color: var(--slate);
+    }
+
+    .res-tiles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .res-tile {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: .2s;
+    }
+
+    .res-tile:hover {
+      border-color: var(--royal);
+      background: var(--royal-glow);
+    }
+
+    .res-tile .ti {
+      width: 40px;
+      height: 40px;
+      flex: none;
+      border-radius: 10px;
+      background: rgba(11, 29, 58, .05);
+      color: var(--midnight);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .res-tile .ti svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .res-tile b {
+      font-family: 'Poppins', sans-serif;
+      color: var(--ink);
+      font-size: 14.5px;
+      display: block;
+      font-weight: 700;
+    }
+
+    .res-tile small {
+      font-size: 12px;
+      color: var(--slate);
+    }
+
+    .event-panel {
+      background: linear-gradient(155deg, var(--midnight), #162f5a);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-panel::before {
+      content: "";
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 168, 23, .1), transparent 70%);
+      pointer-events: none;
+    }
+
+    .event-panel .eyebrow {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .event-panel h3 {
+      font-family: 'DM Serif Display', serif;
+      color: #fff;
+      font-size: 26px;
+      margin: 14px 0 8px;
+    }
+
+    .event-panel .tagline {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--saffron);
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .event-panel p {
+      color: rgba(255, 255, 255, .55);
+      font-size: 14.5px;
+      line-height: 1.65;
+    }
+
+    .event-stats {
+      display: flex;
+      gap: 28px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .event-stats b {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24px;
+      color: #fff;
+      display: block;
+    }
+
+    .event-stats small {
+      color: rgba(255, 255, 255, .4);
+      font-size: 12px;
+    }
+
+    /* ═══════════════════════════════════════
+     MEMBERS
+     ═══════════════════════════════════════ */
+    .mem-section {
+      background: var(--frost);
+    }
+
+    .mem-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .mem-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .mem-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .mem-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .mem-card .logo-sq {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--frost), #dde5f0);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: var(--midnight);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+
+    .mem-card .nm {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 15px;
+    }
+
+    .mem-card .reg {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--slate);
+      margin-top: 5px;
+    }
+
+    .mem-card .verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--royal);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    .mem-card .verified svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .mem-card .dest {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--vermillion);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    .countries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+      justify-content: center;
+    }
+
+    .chip {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--midnight);
+      transition: .15s;
+    }
+
+    .chip:hover {
+      border-color: var(--royal);
+      color: var(--royal);
+    }
+
+    /* Search & Filter System */
+    .search-wrapper {
+      margin-top: 32px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .search-bar-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 4px 6px 4px 18px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .search-bar-container:focus-within {
+      border-color: var(--royal);
+      box-shadow: 0 0 0 4px var(--royal-glow), var(--shadow-md);
+    }
+
+    .search-bar-container .search-icon-svg {
+      width: 20px;
+      height: 20px;
+      color: var(--slate-light);
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .search-bar-container input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 12px 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .search-bar-container input::placeholder {
+      color: var(--slate-light);
+      font-weight: 400;
+    }
+
+    .clear-search-btn {
+      background: transparent;
+      border: none;
+      color: var(--slate-light);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .clear-search-btn.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .clear-search-btn:hover {
+      background: var(--frost);
+      color: var(--ink);
+    }
+
+    .clear-search-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .filter-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13.5px;
+      color: var(--slate);
+      font-weight: 500;
+    }
+
+    .filter-meta b {
+      color: var(--midnight);
+    }
+
+    .chip {
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .chip.active {
+      background: var(--royal);
+      color: #ffffff;
+      border-color: var(--royal);
+      box-shadow: 0 4px 12px rgba(27, 79, 210, 0.2);
+    }
+
+    .chip.active:hover {
+      background: #1644B5;
+      color: #ffffff;
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 56px 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      display: none;
+    }
+
+    .no-results-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(217, 48, 37, 0.08);
+      color: var(--vermillion);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .no-results-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .no-results h3 {
+      font-size: 20px;
+      color: var(--ink);
+      margin-bottom: 8px;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+    }
+
+    .no-results p {
+      font-size: 14.5px;
+      color: var(--slate);
+      max-width: 320px;
+      margin: 0 auto 20px;
+    }
+
+    .mem-card.filtered-out {
+      display: none !important;
+    }
+
+    .mem-card.filtered-in {
+      display: block !important;
+      animation: cardFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Custom logo gradients for verified members */
+    .mem-card .logo-sq.gradient-blue { background: linear-gradient(135deg, #1b4fd2, #497df5); color: #fff; }
+    .mem-card .logo-sq.gradient-red { background: linear-gradient(135deg, #d93025, #f56d64); color: #fff; }
+    .mem-card .logo-sq.gradient-orange { background: linear-gradient(135deg, #e8a817, #f7c963); color: #fff; }
+    .mem-card .logo-sq.gradient-green { background: linear-gradient(135deg, #0f9d58, #42c786); color: #fff; }
+    .mem-card .logo-sq.gradient-indigo { background: linear-gradient(135deg, #3f51b5, #757de8); color: #fff; }
+    .mem-card .logo-sq.gradient-teal { background: linear-gradient(135deg, #009688, #4db6ac); color: #fff; }
+    .mem-card .logo-sq.gradient-purple { background: linear-gradient(135deg, #9c27b0, #ba68c8); color: #fff; }
+    .mem-card .logo-sq.gradient-navy { background: linear-gradient(135deg, #0b1d3a, #203a61); color: #fff; }
+
+    @media (max-width: 560px) {
+      .search-bar-container {
+        padding: 4px 6px 4px 14px;
+      }
+      .search-bar-container input {
+        font-size: 15px;
+        padding: 10px 0;
+      }
+      .filter-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .search-wrapper .countries {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        width: calc(100% + 40px);
+        margin-left: -20px;
+        padding-left: 20px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .search-wrapper .countries::-webkit-scrollbar {
+        display: none;
+      }
+      .search-wrapper .chip {
+        flex-shrink: 0;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+     CTA STRIP
+     ═══════════════════════════════════════ */
+    .cta-strip {
+      background: var(--vermillion);
+      border-radius: var(--radius-xl);
+      padding: 56px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-strip::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, .06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(0, 0, 0, .08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .cta-strip h2 {
+      color: #fff;
+      font-size: clamp(28px, 3.6vw, 42px);
+      max-width: 22ch;
+      margin: 0 auto 14px;
+      position: relative;
+    }
+
+    .cta-strip p {
+      color: rgba(255, 255, 255, .75);
+      max-width: 50ch;
+      margin: 0 auto 28px;
+      font-size: 17px;
+      position: relative;
+    }
+
+    .cta-strip .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+    footer {
+      background: var(--midnight);
+      color: rgba(255, 255, 255, .55);
+      padding: 64px 0 28px;
+      margin-top: 0;
+    }
+
+    .f-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 36px;
+    }
+
+    .f-brand .wm {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: #fff;
+      display: block;
+    }
+
+    .f-brand .tag-line {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--saffron);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-top: 4px;
+    }
+
+    .f-brand p {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-top: 14px;
+      color: rgba(255, 255, 255, .4);
+    }
+
+    .f-brand .est {
+      margin-top: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .3);
+    }
+
+    footer h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .3);
+      margin: 0 0 16px;
+      font-weight: 700;
+    }
+
+    footer a {
+      display: block;
+      color: rgba(255, 255, 255, .55);
+      padding: 4px 0;
+      font-size: 14px;
+      transition: .15s;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .f-bar {
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      margin-top: 42px;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .25);
+    }
+
+    /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+    @media (max-width: 1080px) {
+      nav.main {
+        display: none;
+      }
+
+      .navtoggle {
+        display: inline-block;
+      }
+
+      .bar .right .btn {
+        display: none;
+      }
+
+      .hero .grid {
+        grid-template-columns: 1fr;
+        padding: 48px 0 0;
+      }
+
+      .hero-visual {
+        min-height: 400px;
+        margin-top: 16px;
+      }
+
+      .hero-stats-vertical {
+        flex-direction: row;
+        max-width: none;
+        justify-content: center;
+        margin-top: 32px;
+      }
+
+      @media (max-width: 768px) {
+        .hero-stats-vertical {
+          flex-direction: column;
+          align-items: center;
+        }
+        .hero-stat-card {
+          width: 100%;
+          max-width: 280px;
+        }
+      }
+
+      .trustbar-card {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .trustbar-card .trust-item:nth-child(2)::after {
+        display: none;
+      }
+
+      .trustbar-card .trust-item.active-indicator::before {
+        left: 28px;
+      }
+
+      .about-grid,
+      .vision,
+      .pres-grid,
+      .app-band,
+      .res-wrap {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .mission-grid,
+      .paths-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mem-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .f-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      section {
+        padding: 64px 0;
+      }
+
+      .trustbar-card {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-item {
+        border-right: none;
+        border-bottom: 1px solid var(--line-subtle);
+      }
+
+      .trust-item:last-child {
+        border-bottom: none;
+      }
+
+      .hero-visual {
+        min-height: auto;
+      }
+
+      .geo-accent-1 {
+        display: none;
+      }
+
+      .geo-accent-2 {
+        width: 80px;
+        height: 80px;
+        border-radius: 14px;
+      }
+
+      .geo-accent-2 .yr {
+        font-size: 22px;
+      }
+
+      .geo-accent-2 .yr small {
+        font-size: 9px;
+      }
+
+      .geo-main {
+        width: 85%;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+      }
+
+      .hero-stat {
+        flex: none;
+      }
+
+      .mem-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .f-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mandate,
+      .vision,
+      .app-band,
+      .event-panel,
+      .cta-strip,
+      .res-panel {
+        padding: 28px 22px;
+      }
+
+      .res-tiles {
+        grid-template-columns: 1fr;
+      }
+
+      .pres-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+     REDUCED MOTION
+     ═══════════════════════════════════════ */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .hero-word {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+
+      .hero .lede,
+      .hero .ctas,
+      .hero .trust {
+        animation: none;
+        opacity: 1;
+      }
+
+      .ascent-path {
+        animation: none;
+        stroke-dashoffset: 0;
+      }
+
+      .reveal {
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
+
+      .path-card:hover,
+      .m-card:hover,
+      .mem-card:hover {
+        transform: none;
+      }
+
+      .stakes h2 em::after {
+        transition: none;
+        transform: scaleX(1);
+      }
+    }
+
+    /* Mobile nav open state */
+    nav.main.open {
+      display: flex !important;
+      flex-direction: column;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 32px;
+      box-shadow: var(--shadow-md);
+      gap: 4px;
+      z-index: 100;
+    }
+
+    nav.main.open a {
+      padding: 10px 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="wrap bar">
+      <a class="logo" href="#" aria-label="ECAN home">
+        <span class="mark">
+          <img src="logo.png" alt="ECAN Logo">
+        </span>
+        <span class="logo-text-wrapper">
+          <span class="logo-np">नेपाल शैक्षिक परामर्श संघ</span>
+          <span class="logo-en">EDUCATIONAL CONSULTANCY ASSOCIATION OF NEPAL</span>
+        </span>
+      </a>
+      <nav class="main" id="mainNav" aria-label="Primary">
+        <a class="active" href="#">Home</a>
+        <a href="#about">About ECAN</a>
+        <a href="#members">Members Directory</a>
+        <a href="#resources">Study Abroad Resources</a>
+        <a href="#events">Events &amp; Conferences</a>
+        <a href="#paths">Partnerships</a>
+        <a href="#">News &amp; Updates</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="right">
+        <a class="btn btn-primary" href="#paths" style="font-size:14px; padding:10px 20px;">Join ECAN <span>→</span></a>
+        <button class="navtoggle" aria-label="Toggle menu" id="navToggleBtn">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 1 · HERO ============ -->
+    <section class="hero">
+      <div class="wrap grid">
+        <div class="hero-content">
+          <span class="eyebrow">&mdash; 29 Years of Excellence</span>
+          <h1 style="margin-top:20px;">
+            <span class="hero-word">Building</span>
+            <span class="hero-word">Global</span><br>
+            <span class="hero-word">Futures,</span>
+            <span class="hero-word accent">Together.</span>
+          </h1>
+          <p class="lede">ECAN connects Nepal to world-class education opportunities through trusted consultancies, strong partnerships, and student-first values.</p>
+          <div class="ctas" style="position: relative; z-index: 2;">
+            <a class="btn btn-primary" href="#about">Explore ECAN <span>&rarr;</span></a>
+            <a class="btn btn-outline" href="#members" style="display: inline-flex; align-items: center; gap: 8px;">
+              Find a Member
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </a>
+          </div>
+          <div class="trust">
+            <div class="avatars">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80" alt="Student avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" alt="Student avatar">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80" alt="Student avatar">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80" alt="Student avatar">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80" alt="Student avatar">
+            </div>
+            <div class="tt">
+              <b>Trusted by 750+ Members</b>
+              <small>A strong community across Nepal &amp; beyond.</small>
+            </div>
+          </div>
+          <div class="dot-pattern" aria-hidden="true">
+            <svg width="64" height="96" viewBox="0 0 64 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="2.5" fill="var(--line)"/>
+              <circle cx="24" cy="8" r="2.5" fill="var(--line)"/>
+              <circle cx="40" cy="8" r="2.5" fill="var(--line)"/>
+              <circle cx="56" cy="8" r="2.5" fill="var(--line)"/>
+              <circle cx="8" cy="24" r="2.5" fill="var(--line)"/>
+              <circle cx="24" cy="24" r="2.5" fill="var(--line)"/>
+              <circle cx="40" cy="24" r="2.5" fill="var(--line)"/>
+              <circle cx="56" cy="24" r="2.5" fill="var(--line)"/>
+              <circle cx="8" cy="40" r="2.5" fill="var(--line)"/>
+              <circle cx="24" cy="40" r="2.5" fill="var(--line)"/>
+              <circle cx="40" cy="40" r="2.5" fill="var(--line)"/>
+              <circle cx="56" cy="40" r="2.5" fill="var(--line)"/>
+              <circle cx="8" cy="56" r="2.5" fill="var(--line)"/>
+              <circle cx="24" cy="56" r="2.5" fill="var(--line)"/>
+              <circle cx="40" cy="56" r="2.5" fill="var(--line)"/>
+              <circle cx="56" cy="56" r="2.5" fill="var(--line)"/>
+              <circle cx="8" cy="72" r="2.5" fill="var(--line)"/>
+              <circle cx="24" cy="72" r="2.5" fill="var(--line)"/>
+              <circle cx="40" cy="72" r="2.5" fill="var(--line)"/>
+              <circle cx="56" cy="72" r="2.5" fill="var(--line)"/>
+              <circle cx="8" cy="88" r="2.5" fill="var(--line)"/>
+              <circle cx="24" cy="88" r="2.5" fill="var(--line)"/>
+              <circle cx="40" cy="88" r="2.5" fill="var(--line)"/>
+              <circle cx="56" cy="88" r="2.5" fill="var(--line)"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-bg-decor">
+            <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 50 400 C 150 420, 220 280, 180 200 C 140 120, 240 100, 320 120 C 360 130, 420 180, 460 220" stroke="var(--royal)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.45"/>
+              <circle cx="250" cy="250" r="200" stroke="var(--line)" stroke-width="1" opacity="0.25" stroke-dasharray="2 2"/>
+              <path d="M 50 250 Q 250 150 450 250" stroke="var(--line)" stroke-width="1" opacity="0.2" stroke-dasharray="2 2"/>
+              <path d="M 50 250 Q 250 350 450 250" stroke="var(--line)" stroke-width="1" opacity="0.2" stroke-dasharray="2 2"/>
+              <path d="M 250 50 Q 150 250 250 450" stroke="var(--line)" stroke-width="1" opacity="0.2" stroke-dasharray="2 2"/>
+              <path d="M 250 50 Q 350 250 250 450" stroke="var(--line)" stroke-width="1" opacity="0.2" stroke-dasharray="2 2"/>
+              <g transform="translate(250, 110) rotate(-15) scale(0.8)">
+                <path d="M 0 0 L 40 -10 L 15 15 Z" fill="none" stroke="var(--royal)" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M 15 15 L 40 -10 L 22 28 Z" fill="none" stroke="var(--royal)" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M 15 15 L 22 28 L 18 19 Z" fill="none" stroke="var(--royal)" stroke-width="2" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </div>
+          <div class="student-img-container">
+            <img src="hero-right.png" alt="ECAN Student Portrait holding a book" class="student-img">
+          </div>
+        </div>
+
+        <div class="hero-stats-vertical">
+          <div class="hero-stat-card reveal">
+            <div class="stat-icon-wrapper blue-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <b class="countup" data-target="750">0</b>
+              <small>Member Consultancies</small>
+            </div>
+          </div>
+
+          <div class="hero-stat-card reveal reveal-delay-1">
+            <div class="stat-icon-wrapper red-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <b class="countup" data-target="40">0</b>
+              <small>Global Education Partners</small>
+            </div>
+          </div>
+
+          <div class="hero-stat-card reveal reveal-delay-2">
+            <div class="stat-icon-wrapper blue-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <b class="countup" data-target="29">0</b>
+              <small>Years of Industry Leadership</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ASCENT LINE DIVIDER ============ -->
+    <div class="ascent-divider" aria-hidden="true">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0 60 L0 42 L80 38 L160 30 L240 34 L340 18 L420 22 L500 12 L560 20 L640 8 L720 14 L800 6 L880 16 L960 10 L1040 20 L1120 14 L1200 18 L1200 60 Z"
+          fill="var(--card)" />
+        <path class="ascent-path"
+          d="M0 42 L80 38 L160 30 L240 34 L340 18 L420 22 L500 12 L560 20 L640 8 L720 14 L800 6 L880 16 L960 10 L1040 20 L1120 14 L1200 18"
+          stroke="var(--saffron)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />
+      </svg>
+    </div>
+
+    <!-- ============ TRUST BAR ============ -->
+    <section class="trustbar">
+      <div class="wrap">
+        <div class="trustbar-card reveal">
+          <div class="trust-item active-indicator">
+            <div class="t-icon blue-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M9 11l2 2 4-4"></path>
+              </svg>
+            </div>
+            <div class="t-info">
+              <h4>Trusted Network</h4>
+              <p>Verified consultancies committed to ethical guidance and success.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="t-icon red-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+            </div>
+            <div class="t-info">
+              <h4>Global Connections</h4>
+              <p>Strong partnerships with universities and institutions worldwide.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="t-icon blue-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </div>
+            <div class="t-info">
+              <h4>Student Success</h4>
+              <p>Empowering students to achieve their global education goals.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="t-icon red-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="t-info">
+              <h4>Industry Leadership</h4>
+              <p>Advocating for quality, standards, and growth of the education sector.</p>
+            </div>
+          </div>
+        </div>
+
+    <!-- ============ 2 · ABOUT ============ -->
+    <section id="about">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-img reveal">
+            <img src="aboutphoto.jpg" alt="ECAN members and students collaborating at an educational event">
+            <div class="badge-float">
+              <div class="b-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M3 21 L3 5 C3 3.9 3.9 3 5 3 L19 3 C20.1 3 21 3.9 21 5 L21 21" />
+                  <path d="M6 21 L6 15 L10 15 L10 21" />
+                  <path d="M3 21 L21 21" />
+                  <rect x="9" y="7" width="6" height="4" rx="1" />
+                </svg>
+              </div>
+              <div><b>1997</b><small>Govt. registered</small></div>
+            </div>
+          </div>
+          <div class="about-text reveal reveal-delay-1">
+            <span class="eyebrow">About ECAN</span>
+            <h2>The leading umbrella organization of Nepal's consultancy sector</h2>
+            <p class="intro">Established in 1997 and guided by integrity, professionalism, and responsible counseling,
+              ECAN promotes ethical student mobility, strengthens member consultancies, and connects Nepali students
+              with trusted global education opportunities.</p>
+            <ul class="pilllist">
+              <li>
+                <span class="marker">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M9 12 L11 14 L15 10" />
+                  </svg>
+                </span>
+                <div><b>Ethical student mobility</b><span>Responsible, transparent counselling across the sector.</span>
+                </div>
+              </li>
+              <li>
+                <span class="marker">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="8.5" cy="7" r="4" />
+                  </svg>
+                </span>
+                <div><b>Stronger members</b><span>Professional development and a binding code of conduct.</span></div>
+              </li>
+              <li>
+                <span class="marker">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M12 2 L2 7 L12 12 L22 7 Z" />
+                    <path d="M2 17 L12 22 L22 17" />
+                    <path d="M2 12 L12 17 L22 12" />
+                  </svg>
+                </span>
+                <div><b>Policy advocacy</b><span>Dialogue with government and key stakeholders.</span></div>
+              </li>
+              <li>
+                <span class="marker">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M2 12 L22 12" />
+                    <path d="M12 2 C14.5 5 16 8.5 16 12 C16 15.5 14.5 19 12 22" />
+                    <path d="M12 2 C9.5 5 8 8.5 8 12 C8 15.5 9.5 19 12 22" />
+                  </svg>
+                </span>
+                <div><b>Global connection</b><span>Linking students to quality providers worldwide.</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3 · MISSION & STANDARDS ============ -->
+    <section style="background: var(--frost);">
+      <div class="wrap">
+        <div class="sec-top center reveal">
+          <span class="eyebrow">Mission &amp; Standards</span>
+          <h2>Built on trust since 1997</h2>
+          <p class="intro" style="margin-left:auto; margin-right:auto;">ECAN strengthens Nepal's educational consultancy
+            sector through ethical practice, professional development, policy dialogue, and responsible global student
+            mobility.</p>
+        </div>
+        <div class="mission-grid">
+          <div class="m-card reveal">
+            <div class="m-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 2 L3 7 L3 12 C3 17.5 7 22 12 23 C17 22 21 17.5 21 12 L21 7 Z" />
+                <path d="M9 12 L11 14 L15 10" />
+              </svg>
+            </div>
+            <h3>Responsible counselling</h3>
+            <p>Promoting transparent practices and professional standards across every member consultancy.</p>
+          </div>
+          <div class="m-card reveal reveal-delay-1">
+            <div class="m-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+              </svg>
+            </div>
+            <h3>Trusted connections</h3>
+            <p>Building bridges between Nepali consultancies, international institutions, service providers, and
+              students.</p>
+          </div>
+          <div class="m-card reveal reveal-delay-2">
+            <div class="m-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M12 22 C12 22 3 16 3 10 C3 6 6 3 9 3 C10.5 3 12 4 12 4 C12 4 13.5 3 15 3 C18 3 21 6 21 10 C21 16 12 22 12 22Z" />
+                <path d="M12 8 L12 14" />
+                <path d="M9 11 L15 11" />
+              </svg>
+            </div>
+            <h3>Sustainable mobility</h3>
+            <p>Ensuring student mobility that is ethical, sustainable, and centered on the student's best interest.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4 · MANDATE ============ -->
+    <section>
+      <div class="wrap">
+        <div class="mandate reveal">
+          <span class="eyebrow eyebrow--light">Our Mandate</span>
+          <h2>Controlling, monitoring and nurturing Nepal's environment for international education</h2>
+          <p class="lede">Registered in 1997, ECAN exists to bring proper information and guidance to parents and
+            students considering studies abroad — an active association of professionals working to keep the sector safe
+            and credible.</p>
+          <div class="mandate-row">
+            <div><b>Endorsed locally</b><small>by Nepali educationalists</small></div>
+            <div><b>Recognized abroad</b><small>by overseas education providers</small></div>
+            <div><b>Trusted since 1997</b><small>students · members · institutions</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5 · STAKES ============ -->
+    <section class="stakes" id="stakesSection">
+      <div class="wrap">
+        <span class="eyebrow">Why It Matters</span>
+        <h2>Behind every journey lies a dream, <em>a family's trust,</em> and a nation's future.</h2>
+        <p class="sub">Every year, thousands of young Nepalis leave home in pursuit of global opportunities. We are
+          committed to ensuring that this journey is guided by transparency, accountability, and student-centered
+          protection.</p>
+      </div>
+    </section>
+
+    <!-- ============ 6 · VISION ============ -->
+    <section>
+      <div class="wrap">
+        <div class="vision reveal">
+          <div>
+            <span class="eyebrow">Our Vision</span>
+            <h2>Opportunity and security, hand in hand.</h2>
+          </div>
+          <p class="big">To create an international education ecosystem where <u>opportunity and security go hand in
+              hand</u> — empowering our youth to achieve their ambitions with confidence and peace of mind.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7 · PRESIDENT + 8 · APP ============ -->
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Message from the President</span>
+        <div class="pres-grid reveal">
+          <div class="portrait-ph">
+            <img src="president.webp" alt="President of ECAN formal portrait">
+          </div>
+          <div class="pres-quote">
+            <blockquote><span class="q">"</span>As we embark on the Smart ECAN 2.0 journey, I want to assure both
+              students and parents of our steadfast commitment to your security and well-being. Together, let's shape a
+              future where education is not only enriching but also secure.<span class="q">"</span></blockquote>
+            <div class="sign">
+              <span class="ln"></span>
+              <div><b>President, ECAN</b> <span>· Current term</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="app-band reveal">
+          <div>
+            <span class="eyebrow eyebrow--light">Smart ECAN 2.0</span>
+            <h3>A secure platform for the study-abroad journey.</h3>
+            <p>Robust security protocols and reliable guidance — for students exploring opportunities, and parents
+              seeking peace of mind.</p>
+            <div class="stores">
+              <a class="store" href="#">▢ App Store</a>
+              <a class="store" href="#">▢ Google Play</a>
+            </div>
+          </div>
+          <div class="phone-ph">
+            <img src="mobile.png" alt="Smart ECAN 2.0 App User Interface">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9 · PATHWAYS ============ -->
+    <section id="paths" style="background: var(--frost);">
+      <div class="wrap">
+        <div class="sec-top center reveal">
+          <span class="eyebrow">Find Your Path</span>
+          <h2>One association, three ways in</h2>
+        </div>
+        <div class="paths-grid">
+          <div class="path-card reveal">
+            <div class="p-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+              </svg>
+            </div>
+            <h3>Students &amp; Parents</h3>
+            <p>Find a verified consultancy, explore safe study options, and check ECAN-endorsed institutions.</p>
+            <a class="go" href="#members">Find a member <span>→</span></a>
+          </div>
+          <div class="path-card reveal reveal-delay-1">
+            <div class="p-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="18" rx="3" />
+                <path d="M8 21V7" />
+                <path d="M12 10h4" />
+                <path d="M12 14h4" />
+              </svg>
+            </div>
+            <h3>Member Consultancies</h3>
+            <p>Join the national association, uphold the code of conduct, and access professional development.</p>
+            <a class="go" href="#contact">Become a member <span>→</span></a>
+          </div>
+          <div class="path-card reveal reveal-delay-2">
+            <div class="p-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12h20" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </div>
+            <h3>Education Providers</h3>
+            <p>Partner with Nepal's recognized umbrella body to reach trusted local consultancies.</p>
+            <a class="go" href="#contact">Partner with ECAN <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 10 · RESOURCES + 11 · EVENTS ============ -->
+    <section id="resources">
+      <div class="wrap">
+        <div class="sec-top reveal">
+          <span class="eyebrow">Study Abroad Resources</span>
+          <h2>Tools for every step</h2>
+        </div>
+        <div class="res-wrap">
+          <div class="res-panel reveal">
+            <h3>Student tools &amp; resources</h3>
+            <p>Everything a student needs, in one trusted place.</p>
+            <div class="res-tiles">
+              <a class="res-tile" href="#">
+                <span class="ti">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                  </svg>
+                </span>
+                <span><b>IELTS booking</b><small>Book your test slot</small></span>
+              </a>
+              <a class="res-tile" href="#">
+                <span class="ti">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                  </svg>
+                </span>
+                <span><b>Resource library</b><small>Guides &amp; country info</small></span>
+              </a>
+              <a class="res-tile" href="#">
+                <span class="ti">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                </span>
+                <span><b>Event calendar</b><small>Fairs, expos, workshops</small></span>
+              </a>
+              <a class="res-tile" href="#members">
+                <span class="ti">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                </span>
+                <span><b>Members directory</b><small>Verified consultancies</small></span>
+              </a>
+            </div>
+          </div>
+          <div class="event-panel reveal reveal-delay-1" id="events">
+            <span class="eyebrow eyebrow--light">Events &amp; Conferences</span>
+            <h3>ECAN Education Fair</h3>
+            <p class="tagline">"Professionalism Unplugged: Where memories are made!"</p>
+            <p>Nepal's largest education event — meet universities and embassies face to face.</p>
+            <div class="event-stats">
+              <div><b class="countup" data-target="15000">0</b><small>Visitors</small></div>
+              <div><b class="countup" data-target="20">0</b><small>Countries</small></div>
+            </div>
+            <a class="btn" href="#"
+              style="background:#fff; color:var(--midnight); font-size:14px; padding:10px 20px;">See upcoming events
+              →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 12 · MEMBERS DIRECTORY ============ -->
+    <section id="members" class="mem-section">
+      <div class="wrap">
+        <div class="mem-head reveal">
+          <div class="sec-top" style="max-width:none;">
+            <span class="eyebrow">Members Directory</span>
+            <h2 style="margin-top:14px;">Vetted, verified, accountable</h2>
+            <p class="intro">Every member carries an MOE registration number you can verify, and is bound by ECAN's code
+              of conduct.</p>
+          </div>
+          <a class="btn btn-primary" href="#">Browse all 750+ members →</a>
+        </div>
+        <!-- Search & Filter Controls -->
+        <div class="search-wrapper reveal">
+          <div class="search-bar-container">
+            <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="memberSearch" placeholder="Search by consultancy name, registration number, or destination..." autocomplete="off">
+            <button id="clearSearch" class="clear-search-btn" aria-label="Clear search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div class="filter-meta">
+            <div>
+              Quick filter: <span class="filter-instruction" style="color: var(--slate-light); font-weight: normal;">(Select a destination)</span>
+            </div>
+            <div id="filterStats">
+              Showing all <b id="visibleCount">8</b> verified members
+            </div>
+          </div>
+
+          <div class="countries" style="margin-top: 0; justify-content: flex-start;">
+            <span class="chip" data-filter="all">All Destinations</span>
+            <span class="chip" data-filter="USA">USA</span>
+            <span class="chip" data-filter="Australia">Australia</span>
+            <span class="chip" data-filter="Canada">Canada</span>
+            <span class="chip" data-filter="UK">UK</span>
+            <span class="chip" data-filter="Ireland">Ireland</span>
+            <span class="chip" data-filter="Europe">Europe</span>
+            <span class="chip" data-filter="Germany">Germany</span>
+            <span class="chip" data-filter="Japan">Japan</span>
+            <span class="chip" data-filter="Finland">Finland</span>
+            <span class="chip" data-filter="New Zealand">New Zealand</span>
+          </div>
+        </div>
+
+        <div class="mem-grid" id="memberGrid">
+          <!-- Card 1 -->
+          <div class="mem-card reveal filtered-in" data-name="AIMS Education Consultancy" data-reg="085/074" data-destinations="UK, USA, Australia">
+            <div class="logo-sq gradient-blue">AE</div>
+            <div class="nm">AIMS Education Consultancy</div>
+            <div class="reg">MOE Reg. No. 085/074</div>
+            <div class="verified">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M9 12 L11 14 L15 10" />
+              </svg>
+              ECAN verified
+            </div>
+            <div class="dest">UK · USA · Australia</div>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="mem-card reveal reveal-delay-1 filtered-in" data-name="Alfa Beta" data-reg="104/074" data-destinations="USA, Australia, Canada, Ireland">
+            <div class="logo-sq gradient-red">AB</div>
+            <div class="nm">Alfa Beta</div>
+            <div class="reg">MOE Reg. No. 104/074</div>
+            <div class="verified">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M9 12 L11 14 L15 10" />
+              </svg>
+              ECAN verified
+            </div>
+            <div class="dest">USA · Australia · Canada · Ireland</div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="mem-card reveal reveal-delay-2 filtered-in" data-name="Kangaroo Education Foundation" data-reg="120/074" data-destinations="Australia, New Zealand, Canada">
+            <div class="logo-sq gradient-orange">KE</div>
+            <div class="nm">Kangaroo Education Foundation</div>
+            <div class="reg">MOE Reg. No. 120/074</div>
+            <div class="verified">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M9 12 L11 14 L15 10" />
+              </svg>
+              ECAN verified
+            </div>
+            <div class="dest">Australia · New Zealand · Canada</div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="mem-card reveal reveal-delay-3 filtered-in" data-name="Professional Education Consultancy" data-reg="062/074" data-destinations="Australia, USA, Canada">
+            <div class="logo-sq gradient-green">PE</div>
+            <div class="nm">Professional Education Consultancy</div>
+            <div class="reg">MOE Reg. No. 062/074</div>
+            <div class="verified">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M9 12 L11 14 L15 10" />
+              </svg>
+              ECAN verified
+            </div>
+            <div class="dest">Australia · USA · Canada</div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="mem-card reveal filtered-in" data-name="Grace International" data-reg="198/074" data-destinations="Australia, Canada, UK, Japan">
+            <div class="logo-sq gradient-indigo">GI</div>
+            <div class="nm">Grace International</div>
+            <div class="reg">MOE Reg. No. 198/074</div>
+            <div class="verified">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M9 12 L11 14 L15 10" />
+              </svg>
+              ECAN verified
+            </div>
+            <div class="dest">Australia · Canada · UK · Japan</div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="mem-card reveal reveal-delay-1 filtered-in" data-name="Global Reach" data-reg="045/074" data-destinations="Australia, UK, USA, Canada">
+            <div class="logo-sq gradient-teal">GR</div>
+            <div class="nm">Global Reach</div>
+            <div class="reg">MOE Reg. No. 045/074</div>
+            <div class="verified">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M9 12 L11 14 L15 10" />
+              </svg>
+              ECAN verified
+            </div>
+            <div class="dest">Australia · UK · USA · Canada</div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="mem-card reveal reveal-delay-2 filtered-in" data-name="Lotus Education Consultancy" data-reg="254/074" data-destinations="Japan, Finland, Germany">
+            <div class="logo-sq gradient-purple">LE</div>
+            <div class="nm">Lotus Education Consultancy</div>
+            <div class="reg">MOE Reg. No. 254/074</div>
+            <div class="verified">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M9 12 L11 14 L15 10" />
+              </svg>
+              ECAN verified
+            </div>
+            <div class="dest">Japan · Finland · Germany</div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="mem-card reveal reveal-delay-3 filtered-in" data-name="Orbit International Education" data-reg="076/074" data-destinations="Germany, Europe, USA">
+            <div class="logo-sq gradient-navy">OI</div>
+            <div class="nm">Orbit International Education</div>
+            <div class="reg">MOE Reg. No. 076/074</div>
+            <div class="verified">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M9 12 L11 14 L15 10" />
+              </svg>
+              ECAN verified
+            </div>
+            <div class="dest">Germany · Europe · USA</div>
+          </div>
+
+          <!-- No Results Message -->
+          <div class="no-results" id="noResultsMessage">
+            <div class="no-results-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+            <h3>No Members Found</h3>
+            <p>We couldn't find any consultancies matching your search query or filters.</p>
+            <button class="btn btn-outline" id="clearFiltersBtn" style="font-size: 13.5px; padding: 10px 20px; display: inline-flex; margin: 0 auto;">Clear Search &amp; Filters</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <div class="cta-strip reveal">
+          <h2>Ready to build your global future with ECAN?</h2>
+          <p>Whether you're a student, a consultancy, or an institution — there's a trusted path forward.</p>
+          <div class="cta-buttons">
+            <a class="btn btn-white" href="#members">Find a Member</a>
+            <a class="btn btn-ghost-white" href="#paths">Join ECAN →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contact">
+    <div class="wrap">
+      <div class="f-grid">
+        <div class="f-brand">
+          <span class="wm">ECAN</span>
+          <span class="tag-line">Building Global Futures, Together</span>
+          <p>Educational Consultancy Association of Nepal<br>Dillibazar (Near Batuleghar)<br>Kathmandu, Nepal</p>
+          <div class="est">Govt. Registered · Est. 1997</div>
+        </div>
+        <div>
+          <h4>Association</h4>
+          <a href="#about">About ECAN</a>
+          <a href="#about">Message from President</a>
+          <a href="#members">Members Directory</a>
+          <a href="#paths">Partnerships</a>
+        </div>
+        <div>
+          <h4>For Students</h4>
+          <a href="#resources">IELTS booking</a>
+          <a href="#resources">Resource library</a>
+          <a href="#events">Event calendar</a>
+          <a href="#">Smart ECAN App</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="tel:+97714421487">+977-1-4421487</a>
+          <a href="tel:+97714422267">+977-1-4422267</a>
+          <a href="mailto:info@ecan.org.np">info@ecan.org.np</a>
+          <a href="#">@ECANNepal · Facebook</a>
+        </div>
+      </div>
+      <div class="f-bar">
+        <span>© 1997–2026 Educational Consultancy Association of Nepal</span>
+        <span>All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    // Mobile nav toggle
+    document.getElementById('navToggleBtn').addEventListener('click', function () {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('open');
+      this.textContent = nav.classList.contains('open') ? 'Close' : 'Menu';
+    });
+
+    // Scroll reveal via IntersectionObserver
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(el => revealObserver.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+
+    // Stakes underline animation
+    const stakesSection = document.getElementById('stakesSection');
+    if (stakesSection && 'IntersectionObserver' in window) {
+      const stakesObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            stakesObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      stakesObserver.observe(stakesSection);
+    }
+
+    // Count-up animation
+    const countEls = document.querySelectorAll('.countup');
+    if ('IntersectionObserver' in window) {
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.target, 10);
+            const duration = 1800;
+            const start = performance.now();
+
+            function step(now) {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              // ease out cubic
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.floor(eased * target);
+              el.textContent = current.toLocaleString() + (target >= 100 ? '+' : '+');
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                el.textContent = target.toLocaleString() + '+';
+              }
+            }
+
+            // Check reduced motion
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) {
+              el.textContent = target.toLocaleString() + '+';
+            } else {
+              requestAnimationFrame(step);
+            }
+            countObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      countEls.forEach(el => countObserver.observe(el));
+    } else {
+      countEls.forEach(el => {
+        el.textContent = parseInt(el.dataset.target, 10).toLocaleString() + '+';
+      });
+    }
+
+    // Members Directory Search and Filter Functionality
+    const searchInput = document.getElementById('memberSearch');
+    const clearSearchBtn = document.getElementById('clearSearch');
+    const memberGrid = document.getElementById('memberGrid');
+    const memberCards = memberGrid.querySelectorAll('.mem-card');
+    const chips = document.querySelectorAll('.search-wrapper .chip');
+    const filterStats = document.getElementById('filterStats');
+    const visibleCountText = document.getElementById('visibleCount');
+    const noResultsMessage = document.getElementById('noResultsMessage');
+    const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+
+    let currentSearchQuery = '';
+    let currentCountryFilter = 'all';
+
+    function updateFilters() {
+      let visibleCount = 0;
+      const normalizedQuery = currentSearchQuery.trim().toLowerCase();
+
+      memberCards.forEach(card => {
+        const name = card.dataset.name ? card.dataset.name.toLowerCase() : '';
+        const reg = card.dataset.reg ? card.dataset.reg.toLowerCase() : '';
+        const destinations = card.dataset.destinations ? card.dataset.destinations.toLowerCase() : '';
+
+        // Check query matching
+        const queryMatches = !normalizedQuery || 
+                             name.includes(normalizedQuery) || 
+                             reg.includes(normalizedQuery) || 
+                             destinations.includes(normalizedQuery);
+
+        // Check country matching
+        const countryMatches = currentCountryFilter === 'all' || 
+                               destinations.includes(currentCountryFilter.toLowerCase());
+
+        if (queryMatches && countryMatches) {
+          card.classList.remove('filtered-out');
+          card.classList.add('filtered-in');
+          visibleCount++;
+        } else {
+          card.classList.remove('filtered-in');
+          card.classList.add('filtered-out');
+        }
+      });
+
+      // Update visible count metadata text
+      if (visibleCountText) {
+        visibleCountText.textContent = visibleCount;
+      }
+      if (filterStats) {
+        if (currentCountryFilter === 'all' && !normalizedQuery) {
+          filterStats.innerHTML = `Showing all <b id="visibleCount">${visibleCount}</b> verified members`;
+        } else {
+          filterStats.innerHTML = `Found <b id="visibleCount">${visibleCount}</b> matching member${visibleCount !== 1 ? 's' : ''}`;
+        }
+      }
+
+      // Show/hide empty state
+      if (noResultsMessage) {
+        if (visibleCount === 0) {
+          noResultsMessage.style.display = 'block';
+        } else {
+          noResultsMessage.style.display = 'none';
+        }
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentSearchQuery = e.target.value;
+        if (clearSearchBtn) {
+          if (currentSearchQuery.length > 0) {
+            clearSearchBtn.classList.add('visible');
+          } else {
+            clearSearchBtn.classList.remove('visible');
+          }
+        }
+        updateFilters();
+      });
+    }
+
+    if (clearSearchBtn) {
+      clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        currentSearchQuery = '';
+        clearSearchBtn.classList.remove('visible');
+        searchInput.focus();
+        updateFilters();
+      });
+    }
+
+    chips.forEach(chip => {
+      // Initialize active chip
+      if (chip.dataset.filter === 'all') {
+        chip.classList.add('active');
+      }
+
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        currentCountryFilter = chip.dataset.filter;
+        updateFilters();
+      });
+    });
+
+    if (clearFiltersBtn) {
+      clearFiltersBtn.addEventListener('click', () => {
+        if (searchInput) {
+          searchInput.value = '';
+          currentSearchQuery = '';
+        }
+        if (clearSearchBtn) {
+          clearSearchBtn.classList.remove('visible');
+        }
+        chips.forEach(c => c.classList.remove('active'));
+        const allChip = Array.from(chips).find(c => c.dataset.filter === 'all');
+        if (allChip) {
+          allChip.classList.add('active');
+        }
+        currentCountryFilter = 'all';
+        updateFilters();
+      });
+    }
+  </script>
+
+</body>
+
+</html>
